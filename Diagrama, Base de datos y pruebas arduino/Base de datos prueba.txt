@@ -1,0 +1,123 @@
+!!!Recoleccion de datos del paciente por medio de la alarma!!!
+
+ Datos de un paciente que entra por una emergencia que se dictamina como "codigo azul",
+ 
+ Creacion de dos tipos de usuarios, Administrador(Acceso irrestricto) y Generico(Acceso parcial).
+
+ Total de ingresantes a la sala medica, ya sea de gravedad o no, si son atendidos de inmediato debido a la gravedad o si estan en espera.
+
+ Tiempo promedio de atencion
+
+ Un reporte donde especifique el estado del paciente por la cama en la que se encuentra, fecha y hora
+	
+
+	create table Enfermeros(
+	Matricula INT PRIMARY KEY,
+	Nombre VARCHAR(30)
+	); /// Agreagado
+
+ 	Create table Zonas(
+	idZona INT(10) PRIMARY KEY,
+	Nombre VARCHAR(30), 	
+	DNI INT,	
+	idEnfermeros INT
+	);  
+
+
+	Create table Pacientes(
+	DNI INT PRIMARY KEY,
+	Nombre VARCHAR(30),
+	Apellido VARCHAR(30),
+	idZona INT,
+	id INT,
+	);
+	
+	create table Datos_Medicos(
+    	id INT AUTO_INCREMENT PRIMARY KEY,
+    	Altura FLOAT,
+	Peso FLOAT,
+    	PresionArterial FLOAT,
+    	Alergias VARCHAR(255),
+    	Enfermedades VARCHAR(255)
+    	);
+	
+	Alter table Enfermeros
+	ADD CONSTRAINT idZona
+ 	FOREIGN KEY (idZona) REFERENCES Zonas(idZona);
+
+	ALTER TABLE Zonas
+	ADD CONSTRAINT DNI
+	FOREIGN KEY (DNI) REFERENCES Pacientes(DNI); 
+
+	ALTER TABLE Zonas
+	ADD CONSTRAINT idEnfermeros
+	FOREIGN KEY (idEnfermeros) REFERENCES Enfermeros(idEnfermeros); 
+
+	Alter Table Pacientes
+	ADD CONSTRAINT idZona
+	FOREIGN KEY (idZona) REFERENCES Zonas (idZona);
+	
+	Alter Table Pacientes
+	ADD CONSTRAINT id
+	FOREIGN KEY (id) REFERENCES Datos_Medicos(id)
+	
+	
+
+	
+
+	INSERT INTO Zonas(idZona,Nombre)
+	Values(1,'Habitacion'),
+	(2,'Habitacion'),
+	(3,'Cardiología'),
+	(4,'Pediatria'),
+	(5,'Cardiología'),
+	(6,'Guardia')
+	);
+
+	INSERT INTO Enfermeros(Matricula,Nombre,idArea)
+	Values(90879,'Santiago',1),	
+	(90861,'Lautaro',2),
+	(19023,'Thiago',3),
+	(21903,'Gabriel',3),
+	(12096,'Alejandro',4),
+	(32861,'Santino',5),
+	(31023,'Iñaki',5),
+	(21089,'Lucho',6)
+	;
+
+	INSERT INTO Datos_Medicos(Altura,Peso,PresionArterial,Alergias,Enfermedades) 
+	VALUES(1.90,80,120.08,'Ninguna','Epilepsia'),
+	(1.87,85.6,121.80,'Polem','Asma')
+	;
+
+	INSERT INTO Pacientes Values(46089231,'José','Rodriguez',1,1),	
+	(32897034,'Ailen','Echague',5,2)
+	;	
+
+
+	Areas
+	Pacientes --- Ficha(Datos Personales y Datos medicos) 
+	Enfermeros 
+	Llamado --- Cantidad y tipo de llamado. Atendidos y no atendidos.
+		    Tiempo prom. atencion
+
+
+	create table llamado(
+	id INT AUTO_INCREMENT PRMARY KEY,
+	Hora DATATIME,
+	idArea INT,
+	FOREIGN KEY (idArea) REFRENCES Areas(idArea)
+	);
+	
+	create table LlamadoAzul(
+	idInforme INT AUTO_INCREMENT PRIMARY KEY,
+	DNI INT,
+	idEnfermero INT,
+	FOREIGN KEY (DNI) REFERENCES Pacientes(DNI),
+	FOREIGN KEY (idEnfermero) REFERENCES Enfermeros(idEnfermero)
+	);
+
+
+
+
+
