@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: rgb(49, 179, 32);
+}
+
+.titulo{
+    color: whitesmoke;
+    text-align: center;
+}
+
+nav {
+    background-color: white; 
+    text-align: center; 
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+  }
+  
+  .menuNav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+  }
+  
+  .menuNav li {
+    display: inline; 
+  }
+  
+  .menuNav a {
+    text-decoration: solid;
+    color: #1eff00; 
+    font-weight: bold; 
+    margin-right: 20px;
+  }
+  

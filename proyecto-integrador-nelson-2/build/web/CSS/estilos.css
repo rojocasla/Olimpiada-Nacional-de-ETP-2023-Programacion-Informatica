@@ -1,0 +1,50 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: rgb(49, 179, 32);
+}
+
+h1{
+    color:rgb(55, 192, 43);
+    text-align: center;
+    
+}
+
+.caja{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #29b616;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.boton{
+    color: #29b616;
+    background-color: #ffffff;
+    border-color: #29b616;
+    text-align: center;
+    margin-top: 20px; 
+    display: block; /* Cambiamos a bloque para centrarlo horizontalmente */
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+}
+
+.boton:hover{
+    background-color: rgb(6, 165, 6);
+    color: #ffffff;
+}
+
+input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            top: 50%;
+            left: 50%;
+        }
